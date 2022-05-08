@@ -27,7 +27,7 @@ job "finwo-nl" {
       }
       service {
         name = "web"
-        tags = ["urlprefix-test.finwo.nl/"]
+        tags = ["urlprefix-finwo.nl/"]
         port = "http"
         check {
           name     = "alive"
