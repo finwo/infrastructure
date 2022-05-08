@@ -8,6 +8,7 @@ function tmpl {
   curl -fsSL https://raw.githubusercontent.com/finwo/infrastructure/master/config/tmpl/$1 | envsubst
 }
 
+module socat/install.sh
 module docker/install.sh
 module consul/install.sh
 module nomad/install.sh
