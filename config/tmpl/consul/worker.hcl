@@ -4,8 +4,10 @@ client_addr = "127.0.0.1 {{ GetInterfaceIP \"docker0\" }}"
 server = false
 
 ui_config{
-  enabled = true
+  enabled = false
 }
 
 bind_addr = "0.0.0.0" # Listen on all IPv4
-advertise_addr = "${NM_AGENT}"
+
+
+retry_join = ["${NM_AGENT}"]
