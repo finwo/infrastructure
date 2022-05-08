@@ -8,7 +8,7 @@ job "fabio" {
       driver = "exec"
       config {
         command = "fabio-1.6.0-linux_amd64"
-        args = ["-proxy.addr", "$${attr.unique.network.ip-address}:9999", "-registry.consul.addr", "127.0.0.1:8500", "-ui.addr", "$${attr.unique.network.ip-address}:9998"]
+        args = ["-proxy.addr", "$${attr.unique.network.ip-address}:80", "-registry.consul.addr", "127.0.0.1:8500", "-ui.addr", "$${attr.unique.network.ip-address}:9998"]
       }
 
       artifact {
