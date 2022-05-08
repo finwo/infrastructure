@@ -4,7 +4,6 @@ job "fabio" {
 
   group "fabio" {
     network {
-      mode = "bridge"
       port "lb" {
         static = 80
         to = 9999
