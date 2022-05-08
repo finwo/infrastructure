@@ -17,7 +17,7 @@ job "consul" {
 
       config {
         command = "local/bin/consul"
-        args    = ["agent", "-config-file=local/consul.hcl"]
+        args    = ["agent", "-config-file=local/etc/consul.d/consul.hcl"]
       }
 
       artifact {
@@ -27,7 +27,7 @@ job "consul" {
 
       artifact {
         source      = "https://raw.githubusercontent.com/finwo/infrastructure/master/job/consul-client/consul.hcl"
-        destination = "local"
+        destination = "local/etc/consul.d"
       }
 
       resources {
