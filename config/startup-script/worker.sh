@@ -13,6 +13,7 @@ module consul/install.sh
 module nomad/install.sh
 module cni-plugins/install.sh
 
+export DEFAULT_IP=$(ip route | grep default | tr ' ' '\n' | grep src -A 1 | tail -1)
 export DATACENTER=$(curl -fsSL "http://metadata.google.internal/computeMetadata/v1/instance/attributes/datacenter" -H "Metadata-Flavor: Google")
 export NM_AGENT=$(curl -fsSL "http://metadata.google.internal/computeMetadata/v1/instance/attributes/nm-agent" -H "Metadata-Flavor: Google")
 

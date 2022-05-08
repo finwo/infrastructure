@@ -7,7 +7,7 @@ ui_config{
   enabled = false
 }
 
-bind_addr = "0.0.0.0" # Listen on all IPv4
+bind_addr = "${DEFAULT_IP}"
 
 
 retry_join = ["${NM_AGENT}"]
