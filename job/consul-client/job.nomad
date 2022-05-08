@@ -27,7 +27,7 @@ job "consul" {
 
       artifact {
         source      = "https://raw.githubusercontent.com/finwo/infrastructure/master/job/consul-client/consul.hcl"
-        destination = "local/consul.hcl"
+        destination = "local"
       }
 
       resources {
