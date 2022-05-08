@@ -1,5 +1,6 @@
 # Setup data dir
 data_dir = "/opt/nomad/data"
+datacenter = "${DATACENTER}"
 
 # Registration in the service mesh
 consul {
