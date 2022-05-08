@@ -1,14 +1,27 @@
-# Full configuration options can be found at https://www.nomadproject.io/docs/configuration
-
-datacenter = "${datacenter}"
-data_dir   = "/opt/nomad/data"
+# Setup data dir
+data_dir = "/opt/nomad/data"
 bind_addr  = "0.0.0.0"
 
+# Registration in the service mesh
+consul {
+
+  # Where to register
+  address = "${NM_AGENT}:8500"
+
+  # What to register as
+  server_service_name = "nomad"
+  # client_service_name = "nomad-client"
+
+  # Enable service registration
+  auto_advertise = true
+
+  # Bootstrap server and client using consul
+  server_auto_join = true
+  # client_auto_join = true
+}
+
 server {
-  # license_path is required as of Nomad v1.1.1+
-  #license_path = "/etc/nomad.d/nomad.hcl"
   enabled = true
-  bootstrap_expect = 1
 }
 client {
   enabled = false
