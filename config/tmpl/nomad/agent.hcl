@@ -1,6 +1,5 @@
 # Setup data dir
 data_dir = "/opt/nomad/data"
-bind_addr  = "0.0.0.0"
 
 # Registration in the service mesh
 consul {
