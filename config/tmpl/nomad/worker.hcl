@@ -6,7 +6,7 @@ datacenter = "${DATACENTER}"
 consul {
 
   # Where to register
-  address = "${NM_AGENT}:8500"
+  address = "localhost:8500"
 
   # What to register as
   # server_service_name = "nomad"
