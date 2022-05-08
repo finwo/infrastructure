@@ -7,12 +7,12 @@ job "fabio" {
     task "fabio" {
       driver = "exec"
       config {
-        command = "fabio-1.5.15-go1.15.5-linux_amd64"
-        args = ["-proxy.addr", "$${attr.unique.network.ip-address}:9999", "-registry.consul.addr", "$${attr.unique.network.ip-address}:8500", "-ui.addr", "$${attr.unique.network.ip-address}:9998"]
+        command = "fabio-1.6.0-linux_amd64"
+        args = ["-proxy.addr", "$${attr.unique.network.ip-address}:9999", "-registry.consul.addr", "127.0.0.1:8500", "-ui.addr", "$${attr.unique.network.ip-address}:9998"]
       }
 
       artifact {
-        source = "https://github.com/fabiolb/fabio/releases/download/v1.5.15/fabio-1.5.15-go1.15.5-linux_amd64"
+        source = "https://github.com/fabiolb/fabio/releases/download/v1.6.0/fabio-1.6.0-linux_amd64"
       }
 
       resources {
