@@ -12,7 +12,7 @@ job "consul" {
         static = 9998
       }
     }
-    task "fabio" {
+    task "consul" {
       driver = "raw_exec"
 
       config {
@@ -27,19 +27,20 @@ job "consul" {
 
       template {
         data = <<EOH
-datacenter = "eu-west1-b"
-data_dir = "/opt/consul/data"
-client_addr = "127.0.0.1"
-server = false
-bind_addr = "127.0.0.1"
-advertise_addr = "127.0.0.1"
-retry_join = ["10.164.0.10"]
-ui_config {
-  enabled = false
+datacenter  = "europe-west1-b"
+data_dir    = "/opt/consul/data"
+bind_addr   = "0.0.0.0"
+client_addr = "127.0.0.1 {{GetInterfaceIP \"docker0\"}}"
+retry_join  = ["10.164.0.10"]
+ports {
 }
+addresses {
+}
+ui = false
+server = false
 EOH
 
-        destnation = "local/consul.hcl"
+        destination = "local/consul.hcl"
       }
 
       resources {
