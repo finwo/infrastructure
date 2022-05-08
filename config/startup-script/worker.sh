@@ -9,6 +9,7 @@ function tmpl {
 }
 
 module docker/install.sh
+module consul/install.sh
 module nomad/install.sh
 module cni-plugins/install.sh
 
@@ -18,5 +19,7 @@ export NM_AGENT=$(curl -fsSL "http://metadata.google.internal/computeMetadata/v1
 mkdir -p /etc/nomad.d
 mkdir -p /opt/nomad/data
 tmpl nomad/worker.hcl > /etc/nomad.d/nomad.hcl
+tmpl consul/worker.hcl > /etc/consul.d/consul.hcl
 
+module consul/enable.sh
 module nomad/enable.sh
