@@ -4,7 +4,7 @@ job "fabio" {
 
   group "fabio" {
 
-    task "priviliged_post" {
+    task "priviliged_port" {
       driver = "raw_exec"
       config {
         command = "socat"
