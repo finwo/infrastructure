@@ -26,6 +26,18 @@ job "uc-finwo-net" {
       delay_function = "constant"
       unlimited      = true
     }
+    service {
+      name = "web"
+      tags = ["urlprefix-uc.finwo.net/"]
+      port = "http"
+      check {
+        name     = "alive"
+        type     = "http"
+        interval = "10s"
+        timeout  = "3s"
+        path     = "/"
+      }
+    }
     task "uc-finwo-net-task" {
       driver = "docker"
       config {
