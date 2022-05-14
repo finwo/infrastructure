@@ -1,6 +1,7 @@
 job "finwo-nl" {
   datacenters = ["eu-west1-b"]
   type = "service"
+
   constraint {
     attribute = "${attr.kernel.name}"
     value     = "linux"
