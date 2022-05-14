@@ -1,5 +1,5 @@
 job "uc-finwo-net" {
-  datacenters = ["europe-west1-b"]
+  datacenters = ["eu-west1-b"]
   type = "service"
   constraint {
     attribute = "${attr.kernel.name}"
