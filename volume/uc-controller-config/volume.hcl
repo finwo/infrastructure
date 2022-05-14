@@ -11,7 +11,7 @@ capability {
 }
 
 secrets {
-  userID  = "admin"
+  userID  = "${CEPHCLIENT_ADMIN_USER}"
   userKey = "${CEPHCLIENT_ADMIN_KEY}"
 }
 
