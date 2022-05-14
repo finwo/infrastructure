@@ -42,8 +42,20 @@ job "uc-finwo-net" {
           "uc10001"
         ]
         volumes = [
-          "/mnt/brick-0/volumes/unifi-controller:/config",
+          "/mnt/pool/nomad/unifi-controller:/config",
         ]
+      }
+      service {
+        name = "web"
+        tags = ["urlprefix-uc.finwo.net/"]
+        port = "http"
+        check {
+          name     = "alive"
+          type     = "http"
+          interval = "10s"
+          timeout  = "3s"
+          path     = "/"
+        }
       }
       logs {
         max_files     = 10
