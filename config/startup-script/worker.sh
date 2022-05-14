@@ -25,3 +25,5 @@ tmpl consul/worker.hcl > /etc/consul.d/consul.hcl
 
 module consul/enable.sh
 module nomad/enable.sh
+
+modprobe rbd
