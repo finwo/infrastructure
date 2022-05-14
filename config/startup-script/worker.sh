@@ -8,15 +8,17 @@ function tmpl {
   curl -fsSL https://raw.githubusercontent.com/finwo/infrastructure/master/config/tmpl/$1 | envsubst
 }
 
+export DEFAULT_IP=$(ip route | grep default | tr ' ' '\n' | grep src -A 1 | tail -1)
+export DATACENTER=$(curl -fsSL "http://metadata.google.internal/computeMetadata/v1/instance/attributes/datacenter" -H "Metadata-Flavor: Google")
+export NM_AGENT=$(curl -fsSL "http://metadata.google.internal/computeMetadata/v1/instance/attributes/nm-agent" -H "Metadata-Flavor: Google")
+export NFS_AGENT=$(curl -fsSL "http://metadata.google.internal/computeMetadata/v1/instance/attributes/nfs-agent" -H "Metadata-Flavor: Google")
+
 module socat/install.sh
 module docker/install.sh
 module consul/install.sh
 module nomad/install.sh
 module cni-plugins/install.sh
-
-export DEFAULT_IP=$(ip route | grep default | tr ' ' '\n' | grep src -A 1 | tail -1)
-export DATACENTER=$(curl -fsSL "http://metadata.google.internal/computeMetadata/v1/instance/attributes/datacenter" -H "Metadata-Flavor: Google")
-export NM_AGENT=$(curl -fsSL "http://metadata.google.internal/computeMetadata/v1/instance/attributes/nm-agent" -H "Metadata-Flavor: Google")
+module nfs-client/install.sh
 
 mkdir -p /etc/nomad.d
 mkdir -p /opt/nomad/data
