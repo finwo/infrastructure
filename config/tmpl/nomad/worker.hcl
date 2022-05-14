@@ -35,6 +35,7 @@ plugin "raw_exec" {
 }
 plugin "docker" {
   config {
+    allow_privileged = true
     auth {
       config = "/root/.docker/config.json"
     }
