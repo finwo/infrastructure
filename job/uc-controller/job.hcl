@@ -37,7 +37,7 @@ job "uc-finwo-net" {
           # "uc5514",
           # "uc6789",
           "http",
-          "https",'
+          "https",
           # "uc8880",
           "uc10001"
         ]
