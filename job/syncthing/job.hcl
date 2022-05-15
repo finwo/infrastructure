@@ -24,6 +24,7 @@ job "syncthing" {
 
       config {
         image = "linuxserver/syncthing:latest"
+        ports = ["http"]
         volumes = [
           "/mnt/pool/nomad/syncthing/config:/config",
           "/mnt/pool/nomad/syncthing/data:/data",
@@ -42,7 +43,7 @@ job "syncthing" {
       }
 
       service {
-        name = "syncthing-finwo-net"
+        name = "syncthing-eu-west1-b-finwo-net"
         tags = ["urlprefix-syncthing.eu-west1-b.finwo.net/"]
         port = "http"
         check {
