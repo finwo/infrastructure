@@ -28,8 +28,8 @@ job "uc-finwo-net" {
     }
     service {
       name = "web"
-      tags = ["urlprefix-uc.finwo.net/"]
-      port = "http"
+      tags = ["urlprefix-uc.finwo.net/ proto=https"]
+      port = "https"
       check {
         name     = "alive"
         type     = "http"
