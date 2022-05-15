@@ -48,10 +48,9 @@ job "syncthing" {
         port = "http"
         check {
           name     = "alive"
-          type     = "http"
+          type     = "tcp"
           interval = "10s"
           timeout  = "3s"
-          path     = "/"
         }
       }
     }
