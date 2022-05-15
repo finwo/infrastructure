@@ -28,14 +28,16 @@ job "uc-finwo-net" {
     }
     service {
       name = "web"
-      tags = ["urlprefix-uc.finwo.net/ proto=https"]
+      tags = ["urlprefix-uc.finwo.net/ proto=https tlsskipverify=true"]
       port = "https"
       check {
-        name     = "alive"
-        type     = "http"
-        interval = "10s"
-        timeout  = "3s"
-        path     = "/"
+        name            = "alive"
+        type            = "http"
+        protocol        = "https"
+        tls_skip_verify = true
+        interval        = "10s"
+        timeout         = "3s"
+        path            = "/"
       }
     }
     task "uc-finwo-net-task" {
