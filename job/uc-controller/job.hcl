@@ -40,14 +40,16 @@ job "uc-finwo-net" {
     }
     task "uc-finwo-net-task" {
       driver = "docker"
+
       config {
         network_mode = "bridge"
         image = "linuxserver/unifi-controller"
         ports = ["uc1900", "uc3478", "uc5514", "uc6789", "http", "https", "uc8880", "uc10001"]
-	volumes = [
+        volumes = [
           "/mnt/pool/nomad/unifi-controller:/config",
-	]
+        ]
       }
+
       logs {
         max_files     = 10
         max_file_size = 15
