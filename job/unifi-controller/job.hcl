@@ -54,7 +54,8 @@ job "uc-finwo-net" {
         max_files     = 10
         max_file_size = 15
       }
-      kill_timeout = "10s"
+
+      kill_timeout = "60s"
       resources {
         cpu        =  300
         memory     = 1024
