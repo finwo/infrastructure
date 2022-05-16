@@ -1,4 +1,4 @@
-job "finwo-nl" {
+job "uptime-kuma" {
   datacenters = ["eu-west1-b"]
   type = "service"
 
@@ -6,30 +6,44 @@ job "finwo-nl" {
     attribute = "${attr.kernel.name}"
     value     = "linux"
   }
+
   update {
     stagger      = "10s"
     max_parallel = 1
   }
-  group "finwo-nl" {
+
+  group "group" {
     count = 1
+
     network {
-      port "http" { to = 80 }
+      port "http" { to = 3001 }
     }
-    reschedule {
-      delay          = "30s"
-      delay_function = "constant"
-      unlimited      = true
-    }
-    task "finwo-nl" {
+
+    task "task" {
       driver = "docker"
+
       config {
-        image = "finwo/website"
+        image = "louislam/uptime-kuma:latest"
         ports = ["http"]
+        volumes = [
+          "/mnt/pool/nomad/uptime-kuma:/app/data",
+        ]
+      }
+
+      logs {
+        max_files     = 10
+        max_file_size = 15
+      }
+
+      kill_timeout = "60s"
+      resources {
+        cpu        =  100
+        memory     =  256
       }
 
       service {
-        name = "web"
-        tags = ["urlprefix-finwo.nl/"]
+        name = "uptime-kuma-eu-west1-b-finwo-net"
+        tags = ["urlprefix-uptime.finwo.net/"]
         port = "http"
         check {
           name     = "alive"
@@ -38,17 +52,6 @@ job "finwo-nl" {
           timeout  = "3s"
           path     = "/"
         }
-      }
-
-      logs {
-        max_files     = 10
-        max_file_size = 15
-      }
-      kill_timeout = "10s"
-      resources {
-        cpu        = 100
-        memory     = 100
-        memory_max = 300
       }
     }
   }
