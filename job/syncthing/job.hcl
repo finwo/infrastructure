@@ -38,7 +38,7 @@ job "syncthing" {
 
       kill_timeout = "60s"
       resources {
-        cpu        =  200
+        cpu        =  300
         memory     =  512
       }
 
