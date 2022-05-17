@@ -43,8 +43,8 @@ job "syncthing" {
       }
 
       service {
-        name = "syncthing-eu-west1-b-finwo-net"
-        tags = ["urlprefix-syncthing.eu-west1-b.finwo.net/"]
+        name = "syncthing-finwo-net"
+        tags = ["urlprefix-syncthing.finwo.net/"]
         port = "http"
         check {
           name     = "alive"
