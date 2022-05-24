@@ -1,7 +1,6 @@
-job "finwo-nl" {
+job "git-finwo-net" {
   datacenters = ["eu-west1-b"]
   type = "service"
-
   constraint {
     attribute = "${attr.kernel.name}"
     value     = "linux"
@@ -10,26 +9,30 @@ job "finwo-nl" {
     stagger      = "10s"
     max_parallel = 1
   }
-  group "finwo-nl" {
+  group "git-finwo-net-grp" {
     count = 1
     network {
-      port "http" { to = 80 }
+      port "http" { to = 5000 }
     }
     reschedule {
       delay          = "30s"
       delay_function = "constant"
       unlimited      = true
     }
-    task "finwo-nl" {
+    task "git-finwo-net-task" {
       driver = "docker"
+
       config {
-        image = "finwo/website"
+        image = "finwo/quark"
         ports = ["http"]
+        volumes = [
+          "/mnt/pool/nomad/git-webroot:/srv/www",
+        ]
       }
 
       service {
-        name = "web"
-        tags = ["urlprefix-finwo.nl/"]
+        name = "git-finwo-net"
+        tags = ["urlprefix-git.finwo.net/"]
         port = "http"
         check {
           name     = "alive"
