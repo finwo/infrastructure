@@ -50,9 +50,8 @@ job "plex-finwo-net" {
       }
       kill_timeout = "10s"
       resources {
-        cpu        = 3500
-        memory     =  768
-        memory_max = 2048
+        cpu    = 3500
+        memory = 2048
       }
     }
   }
